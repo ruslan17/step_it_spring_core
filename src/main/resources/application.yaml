@@ -1,0 +1,15 @@
+server:
+  port: 8484
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: jbdc:postgresql://localhost:5432/step_db
+    username: postgres
+    password: admin
+  jpa:
+    database: postgresql
+    properties:
+#      DISABLE JPA VERSION EXCEPTION
+      hibernate.temp.user_jdbc_metadata_defaults: false
