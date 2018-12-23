@@ -3,6 +3,7 @@ package core.controller;
 import core.model.User;
 import core.repository.UserDAO;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,11 @@ public class WebController {
     @GetMapping
     public List<User> findAll() {
         return dao.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Integer id) {
+        return dao.getUserById(id);
     }
 
 }
