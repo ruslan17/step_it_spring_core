@@ -6,7 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-
+@Getter
 @Setter
 @ToString
 @Entity
@@ -14,19 +14,10 @@ import javax.persistence.*;
 public class Person {
 
     @Id
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String firstName;
 
     private String lastName;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
 }
