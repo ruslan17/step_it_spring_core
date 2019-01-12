@@ -1,13 +1,12 @@
 package core.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
-@Getter
+
 @Setter
 @ToString
 @Entity
@@ -15,19 +14,19 @@ import java.time.LocalDate;
 public class Person {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    private String firstName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "passport_id")
-    @JsonManagedReference
-    private Passport passport;
+    private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    @JsonManagedReference
-    private Address address;
+    public String getFirstName() {
+        return firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
 }
