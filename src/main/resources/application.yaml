@@ -1,35 +1,5 @@
 server:
   port: 8484
 
-spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/step_db
-    username: postgres
-    password: root
-  jpa:
-    database: postgresql
-    properties:
-#      DISABLE JPA VERSION EXCEPTION
-      hibernate.temp.use_jdbc_metadata_defaults: false
-    show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: step.it.test.spring@gmail.com
-    password: test1234!
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-
-swagger:
-  enabled: true
-
+scheduler:
+  cron: '*/10 * * * * *'
