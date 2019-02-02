@@ -24,16 +24,5 @@ public class PersonController {
         return service.findById(id);
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(NoSuchUserException.class)
-//    public ErrorInfo noSuchUserExceptionHandler(HttpServletRequest request, NoSuchUserException exception) {
-//        String url = request.getRequestURL().toString();
-//        String message = exception.getLocalizedMessage();
-//
-//        return ErrorInfo.builder()
-//                .url(url)
-//                .message(message)
-//                .build();
-//    }
 
 }
