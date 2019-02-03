@@ -1,5 +1,21 @@
 server:
   port: 8484
 
-scheduler:
-  cron: '*/10 * * * * *'
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/flyway_db
+    username: postgres
+    password: root
+  flyway:
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    core.dao.mappers.*: debug
