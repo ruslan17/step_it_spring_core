@@ -5,7 +5,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/flyway_db
+    url: jdbc:postgresql://localhost:5432/groups_db
     username: postgres
     password: root
   flyway:

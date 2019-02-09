@@ -1,0 +1,56 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="core.dao.mappers.GroupMapper">
+
+    <select id="findById" resultMap="GroupResultMap">
+        <include refid="groupEagerSelect"/>
+    </select>
+
+    <select id="findByIdWithLazyInit" resultMap="GroupResultMap">
+        <if test="isEager == false">
+            <include refid="groupSelect"/>
+            WHERE g.id = #{id};
+        </if>
+        <if test="isEager == true">
+            <include refid="groupEagerSelect"/>
+        </if>
+    </select>
+
+    <sql id="groupSelect">
+      SELECT
+      g.id,
+      g.name,
+      g.description
+      FROM groups g
+    </sql>
+
+    <sql id="groupEagerSelect">
+        SELECT
+            g.id,
+            g.name,
+            g.description,
+            p.id AS provider_id,
+            p.name AS provider_name,
+            p.description AS provider_description
+            FROM
+            groups g, providers p
+            WHERE
+            p.group_id = g.id
+            AND
+            g.id = #{id};
+    </sql>
+
+    <resultMap id="GroupResultMap" type="core.model.Group">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <!--<association property="field_name" resultMap="resMap"/>-->
+        <collection property="providers"
+                    resultMap="core.dao.mappers.ProviderMapper.ProviderResultMap"
+                    ofType="core.model.Provider"
+                    columnPrefix="provider_"/>
+    </resultMap>
+
+</mapper>
